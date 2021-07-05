@@ -13,8 +13,9 @@ type handler struct {
 func (h handler) GetSum(ctx context.Context, request *sum.SumRequest, response *sum.SumResponse) error {
 
 	inputs := make([]int64, 0)
-	var i int64 = 1
-	for ; i < request.Input; i++ {
+
+	var i int64
+	for i = 0; i < request.Input; i++ {
 		inputs = append(inputs, i)
 	}
 
