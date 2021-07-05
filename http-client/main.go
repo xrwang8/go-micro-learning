@@ -10,16 +10,33 @@ import (
 	"github.com/isfk/go-micro-plugins/registry/nacos/v3"
 	"github.com/micro/micro/v3/service/logger"
 	"go-micro-learning/micro-demo/http-client/handler"
+	"os"
 )
 
 var etcdRegistry registry.Registry
 
 const nacosNamespace = "dev"
 
-func main() {
+const (
+	defaultNacosAddr      = "123.56.239.121:8848"
+	defaultNacosNamespace = "dev"
+)
 
+func main() {
+	// 从环境变量中获取nacos的ip和port
+	var nacosAddr string
+	nacosAddr = os.Getenv("NacosAddr")
+	if nacosAddr == "" {
+		nacosAddr = defaultNacosAddr
+	}
+
+	var nacosNamespace string
+	nacosNamespace = os.Getenv("NacosAddr")
+	if nacosNamespace == "" {
+		nacosNamespace = defaultNacosNamespace
+	}
 	nacosRegistry := nacos.NewRegistry(func(options *registry.Options) {
-		options.Addrs = []string{"123.56.239.121:8848"}
+		options.Addrs = []string{nacosAddr}
 		// 支持 namespace
 		options.Context = context.WithValue(context.Background(), &nacos.NacosNamespaceContextKey{}, nacosNamespace)
 
