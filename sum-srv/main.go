@@ -2,28 +2,37 @@ package main
 
 import (
 	"context"
-	"github.com/asim/go-micro/plugins/registry/etcd/v3"
 	"github.com/asim/go-micro/v3"
 	"github.com/asim/go-micro/v3/logger"
 	"github.com/asim/go-micro/v3/registry"
 	"github.com/isfk/go-micro-plugins/registry/nacos/v3"
 	"go-micro-learning/micro-demo/proto/sum"
 	"go-micro-learning/micro-demo/sum-srv/handler"
+	"os"
 )
 
 var etcdReg registry.Registry
 
-func init() {
-	// 注册中心修改为etcd
-	etcdReg = etcd.NewRegistry(registry.Addrs("127.0.0.1:2379"))
-}
-
-const nacosNamespace = "dev"
+const (
+	defaultNacosAddr      = "123.56.239.121:8848"
+	defaultNacosNamespace = "dev"
+)
 
 func main() {
+	// 从环境变量中获取nacos的ip和port
+	var nacosAddr string
+	nacosAddr = os.Getenv("NacosAddr")
+	if nacosAddr == "" {
+		nacosAddr = defaultNacosAddr
+	}
+	var nacosNamespace string
+	nacosNamespace = os.Getenv("NacosAddr")
+	if nacosNamespace == "" {
+		nacosNamespace = defaultNacosNamespace
+	}
 
 	nacosRegistry := nacos.NewRegistry(func(options *registry.Options) {
-		options.Addrs = []string{"123.56.239.121:8848"}
+		options.Addrs = []string{nacosAddr}
 		options.Context = context.WithValue(context.Background(), &nacos.NacosNamespaceContextKey{}, nacosNamespace)
 
 	})
