@@ -2,7 +2,7 @@ package handler
 
 import (
 	"context"
-	"go-micro-learning/micro-demo/proto/sum"
+	"go-micro-learning/micro-demo/sum-srv/proto/sum"
 	"go-micro-learning/micro-demo/sum-srv/service"
 )
 

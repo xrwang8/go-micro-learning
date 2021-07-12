@@ -6,8 +6,8 @@ import (
 	"github.com/asim/go-micro/v3/logger"
 	"github.com/asim/go-micro/v3/registry"
 	"github.com/isfk/go-micro-plugins/registry/nacos/v3"
-	"go-micro-learning/micro-demo/proto/sum"
 	"go-micro-learning/micro-demo/sum-srv/handler"
+	"go-micro-learning/micro-demo/sum-srv/proto/sum"
 	"os"
 )
 

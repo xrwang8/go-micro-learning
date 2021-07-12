@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/asim/go-micro/v3"
 	"github.com/gin-gonic/gin"
-	"go-micro-learning/micro-demo/proto/sum"
+	"go-micro-learning/micro-demo/http-client/proto/sum"
 	"strconv"
 )
 
