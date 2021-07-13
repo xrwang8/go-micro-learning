@@ -26,7 +26,7 @@ func main() {
 		nacosAddr = defaultNacosAddr
 	}
 	var nacosNamespace string
-	nacosNamespace = os.Getenv("NacosAddr")
+	nacosNamespace = os.Getenv("NacosNamespace")
 	if nacosNamespace == "" {
 		nacosNamespace = defaultNacosNamespace
 	}

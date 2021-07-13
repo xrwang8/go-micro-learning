@@ -31,7 +31,7 @@ func main() {
 	}
 
 	var nacosNamespace string
-	nacosNamespace = os.Getenv("NacosAddr")
+	nacosNamespace = os.Getenv("NacosNamespace")
 	if nacosNamespace == "" {
 		nacosNamespace = defaultNacosNamespace
 	}
@@ -43,7 +43,7 @@ func main() {
 	})
 	srv := httpServer.NewServer(
 		server.Name("http-client"),
-		server.Address(":8888"),
+		//server.Address(":8888"),
 	)
 
 	router := gin.Default()
