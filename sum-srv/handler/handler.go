@@ -15,7 +15,7 @@ func (h handler) GetSum(ctx context.Context, request *sum.SumRequest, response *
 	inputs := make([]int64, 0)
 
 	var i int64
-	for i = 0; i < request.Input; i++ {
+	for i = 0; i <= request.Input; i++ {
 		inputs = append(inputs, i)
 	}
 
