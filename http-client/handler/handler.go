@@ -3,6 +3,7 @@ package handler
 import (
 	"context"
 	"github.com/asim/go-micro/v3"
+	"github.com/asim/go-micro/v3/logger"
 	"github.com/gin-gonic/gin"
 	"go-micro-learning/micro-demo/http-client/proto/sum"
 	"strconv"
@@ -27,6 +28,7 @@ func (a *sumHandler) Getsum(router *gin.Engine) {
 			Input: inPut,
 		})
 		if err != nil {
+			logger.Error("无法调用sum-srv服务，请检查sum-srv是否存在")
 			c.JSON(500, gin.H{"code": 500, "msg": err.Error()})
 			return
 		}
