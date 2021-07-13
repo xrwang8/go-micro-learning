@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  sum-srv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - defaultNacosAddr=123.56.239.121:8848
+      - defaultNacosNamespace=dev
+    command: [ "/app/main" ]
