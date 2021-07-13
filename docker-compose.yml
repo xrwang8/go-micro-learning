@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  http-client:
+    build: ./http-client
+    depends_on:
+      - sum-srv
+    ports:
+      - "8080:8080"
+    environment:
+      - NacosAddr=172.31.244.8:8846
+      - NacosNamespace=dev
+    command: [ "/app/main" ]
+
+  sum-srv:
+    build: ./sum-srv
+    ports:
+      - "8081:8081"
+    environment:
+      - NacosAddr=172.31.244.8:8846
+      - NacosNamespace=dev
+    command: [ "/app/main" ]

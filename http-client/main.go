@@ -43,7 +43,7 @@ func main() {
 	})
 	srv := httpServer.NewServer(
 		server.Name("http-client"),
-		//server.Address(":8888"),
+		server.Address(":8080"),
 	)
 
 	router := gin.Default()

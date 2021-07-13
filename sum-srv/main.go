@@ -39,6 +39,7 @@ func main() {
 	service := micro.NewService(
 		micro.Name("sum-srv"),
 		micro.Registry(nacosRegistry),
+		micro.Address(":8081"),
 	)
 	//服务初始化
 	service.Init(
